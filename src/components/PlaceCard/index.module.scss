@@ -1,0 +1,50 @@
+.wrapper {
+    width: 200px;
+    .thumbnail__wrapper {
+        background: lightgray;
+        height: 150px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        position: relative;
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        .btn__whishlist {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            .coeur {
+                width: 25px;
+            }
+        }
+    }
+    .content {
+        display: flex;
+        .metadata {
+            width: 70%;
+            b {
+                font-weight: 600;
+            }
+            p {
+                font-size: 12px;
+                margin-bottom: 10px;
+                font-weight: 300;
+            }
+        }
+        .rate {
+            width: 25%;
+            text-align: right;
+            .star__rate {
+                width: 10PX;
+                color: black;
+            }
+            span {
+                font-size: 11px;
+            }
+        }
+    }
+}
