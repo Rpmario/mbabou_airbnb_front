@@ -1,8 +1,9 @@
 .wrapper {
-    width: 200px;
+    width: 290px;
+    padding: 0px 0px;    
     .thumbnail__wrapper {
         background: lightgray;
-        height: 150px;
+        height: 250px;
         border-radius: 10px;
         margin-bottom: 15px;
         position: relative;
@@ -24,15 +25,18 @@
     }
     .content {
         display: flex;
+        margin-bottom: 25px;
         .metadata {
             width: 70%;
             b {
                 font-weight: 600;
+                color: black;
             }
             p {
                 font-size: 12px;
                 margin-bottom: 10px;
                 font-weight: 300;
+                color: gray;
             }
         }
         .rate {
