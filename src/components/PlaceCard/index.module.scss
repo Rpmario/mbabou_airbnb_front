@@ -1,9 +1,9 @@
 .wrapper {
-    width: 290px;
+    width: 280px;
     padding: 0px 0px;    
     .thumbnail__wrapper {
         background: lightgray;
-        height: 250px;
+        height: 245px;
         border-radius: 10px;
         margin-bottom: 15px;
         position: relative;
@@ -19,7 +19,7 @@
             background: none;
             border: none;
             .coeur {
-                width: 25px;
+                width: 30px;
             }
         }
     }
@@ -33,7 +33,7 @@
                 color: black;
             }
             p {
-                font-size: 12px;
+                font-size: 14px;
                 margin-bottom: 10px;
                 font-weight: 300;
                 color: gray;
@@ -43,11 +43,11 @@
             width: 25%;
             text-align: right;
             .star__rate {
-                width: 10PX;
+                width: 12PX;
                 color: black;
             }
             span {
-                font-size: 11px;
+                font-size: 14px;
             }
         }
     }

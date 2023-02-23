@@ -7,11 +7,6 @@
     bottom: 0;
     padding: 20px;
 }
-.footer__space{
-    border: solid #fff 1px;
-    position: absolute;
-    margin-top: 5%,
-}
 .footer__box{
     display: grid;
     grid-template: repeat(2,auto);
@@ -52,6 +47,9 @@
     float: right;
     width: 100%;
     margin: 0px 50px;
+    @media(max-width: 655px) {
+        display: none;
+    }
     .footer__euro{
         margin-right: -4px;
         color: black;

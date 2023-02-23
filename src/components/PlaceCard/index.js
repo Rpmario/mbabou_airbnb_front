@@ -35,11 +35,11 @@ const updateWish = () => {
           <p><b>{place.title}</b></p>
           <p>{place?.proprio || "Particulier"}</p>
           <p>{place?.periode || "3-9 avril"}</p>
-          <p><b>{place.pricing.perDay + " €"}</b>  par nuit</p>
+          <p><b>{place.pricing.perDay + " €"}</b> par nuit</p>
         </div>
         <div className={styles.rate}>
           <StarIcon className={styles.star__rate} color="black"/>
-          <span>{place?.rate || "None"}</span>
+          <span><b> {place?.rate || " None"}</b></span>
         </div>
         {/* <div className={styles.description}>
           <span>{place.description}</span>

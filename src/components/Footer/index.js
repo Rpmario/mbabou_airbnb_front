@@ -1,13 +1,11 @@
 import React from 'react';
 import Link from "next/link";
-import { GlobeAltIcon, ChevronUpIcon } from '@heroicons/react/24/solid';
+import { ChevronUpIcon } from '@heroicons/react/24/solid';
 import styles from "./index.module.scss";
 
 const Index = () => {
   return (
     <footer>
-      <span className={styles.footer__space}>
-      </span>
       <div className={styles.footer__main}>
         <div className={styles.footer__box}>
           <div className={styles.footer__bloc1}>
@@ -51,7 +49,7 @@ const Index = () => {
           </div>
           <div className={styles.footer__bloc2}>
             <Link href="#" className={styles.footer__l} >
-              <GlobeAltIcon color="black" height={17} className={styles.footer__icon} />
+              <img alt='' src='https://cdn-icons-png.flaticon.com/128/512/512127.png' color="black" height={17} className={styles.footer__icon} />
             </Link>
             <Link href="#" className={styles.footer__link2}>
               Français (FR)
