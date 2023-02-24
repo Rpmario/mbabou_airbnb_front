@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 import AuthService from "../../services/auth.service";
 import TitlePage from "../../components/TitlePage";
 import Input from "../../components/Input";
@@ -32,6 +32,7 @@ const Index = () => {
         } 
         localStorage.setItem('token', data.token);
         router.push("/profil");
+        //window.location.href = window.location.href;
       })
       .catch(
         (err) => {

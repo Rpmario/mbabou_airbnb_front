@@ -32,6 +32,7 @@
         box-shadow: 1px 5px 8px #e2e1e1ab;
         border-radius: 25px;
         padding: 9px;
+        text-decoration: none;
         @media(max-width: 950px) {
             right: 17%;
         }
@@ -137,33 +138,17 @@
             box-shadow: 1px 5px 3px #e2e1e1ab;
         }
     }
-    // &__menu {
-    //     margin: 0px 50px;
-    //     .nav__list {
-    //         display: flex;
-    //         list-style: none;
-    //         .nav__item {
-    //             margin: 0px 10px;
-    //             a {
-    //                 color: black;
-    //                 text-decoration: none;
-    //                 font-size: 13px;
-    //                 font-weight: 500;
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 .header__submain1{
     display: flex;
     justify-content: space-between;
-    align-items: right;
+    align-items: center;
     border-top: 1px solid #e2e1e1ab;
     position: absolute;
     z-index: 9980;
     width: 100%;
-    height: 86px;
+    height: 90px;
     background-color: #fff;
     top: 101%;
 }
@@ -172,16 +157,30 @@
     &__submain2{
         //border: solid red 2px;
         padding: 8px 20px;
+        overflow-x: scroll;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: absolute;
         z-index: 9990;
-        width: 80%;
-        height: 60px;
+        width: 75%;
+        height: 75px;
         background-color: #fff;
-        margin-top: 10px;
+        margin-top: 0px;
+        margin-left: 55px;
     }
+    &__submain2::-webkit-scrollbar {
+        height: 0px;
+    }
+      
+      /* Styling de la poignée de la barre de défilement */
+    //   &__submain2::-webkit-scrollbar-thumb {
+    //     background-color: #999; /* Couleur de la poignée */
+    //     border-radius: 3px; /* Arrondir les coins de la poignée */
+    //   }
+    //   &__submain2::-webkit-scrollbar-track {
+    //     background-color: #eee; /* Couleur de la piste */
+    //   }
     &__filter{
         padding: 8px 10px;
         display: flex;
@@ -190,28 +189,31 @@
         position: absolute;
         z-index: 9990;
         width: max-content;
-        height: 60px;
+        height: 75px;
         background-color: #fff;
-        margin-top: 10px;
+        margin-top: 0px;
         margin-left: 5px;
         right: 100px;
         @media(max-width: 950px) {
             display: none;
         }
         &__filterLink{
-            border: solid red 2px;
+            //border: solid red 2px;
             text-decoration: none;
         }
     }
-    &__chevron{
+    &__chevronNext{
         border: solid gray 1px;
         background-color: #fff;
         border-radius: 15px;
-        margin-bottom: 14px;
-        @media(max-width: 950px) {
+        position: absolute;
+        right: 210px;
+        z-index: 9991;
+        @media(max-width: 655px) {
             display: none;
         }
         .header__chevronIcon{
+            z-index: 9991;
             height: 20px;
             width: 20px;
             display: block;
@@ -219,8 +221,32 @@
             padding: 3px;
         }
     }
-    &__chevron:hover{
-        border: solid rgb(28, 63, 84) 1px;
+    &__chevronNext:hover{
+        border: solid rgb(28, 63, 84) 1.3px;
+        box-shadow: 2px 3px 5px #e2e1e1ab;
+    }
+    &__chevronPrev{
+        border: solid gray 1px;
+        background-color: #fff;
+        border-radius: 15px;
+        position: absolute;
+        left: 20px;
+        z-index: 9991;
+        @media(max-width: 655px) {
+            display: none;
+        }
+        .header__chevronIcon{
+            z-index: 9991;
+            height: 20px;
+            width: 20px;
+            display: block;
+            margin: auto;
+            padding: 3px;
+        }
+    }
+    &__chevronPrev:hover{
+        border: solid rgb(28, 63, 84) 1.3px;
+        box-shadow: 2px 3px 5px #e2e1e1ab;
     }
     &__img{
         text-decoration: none;
@@ -228,8 +254,8 @@
         margin: 1px 8px;
         border-bottom: solid #fff 2px;
         img{
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
             display: block;
             margin: auto;
         }
@@ -237,6 +263,7 @@
             color: gray;
             font-size: 12px;
             margin-top: 10px;
+            width: max-content;
         }
         p:hover{
             color: black;
@@ -266,7 +293,59 @@
           
 }
 
-// Affiche la div en modifiant son style
+.header__divMenu {
+        background-color: #f9f5f5;
+        width: max-content;
+        position: absolute;
+        right: 5px;
+        top: 60px;
+        z-index: 9999999;
+        //padding: 10px;
+        line-height: 40px;
+        border-radius: 10px;
+        box-shadow: 2px 5px 5px #d8d4d4;
+        .nav__list1 {
+            list-style: none;
+            padding: 9px 0px;
+            border-bottom: solid gray 1px;
+            .nav__item {
+                //background-color: #ff385c;
+                a {
+                    margin: 10px 20px;
+                    padding-right: 50%;
+                    color: black;
+                    text-decoration: none;
+                    font-size: 13px;
+                    font-weight: 400;
+                }
+            }
+            :hover{
+                background-color: rgb(233, 242, 249);
+            }
+        }
+        .nav__list2 {
+            list-style: none;
+            padding: 9px 0px;
+            .nav__item {
+                //background-color: #ff385c;
+                a {
+                    margin: 10px 20px;
+                    padding-right: 50%;
+                    color: black;
+                    text-decoration: none;
+                    font-size: 13px;
+                    font-weight: 400;
+                }
+            }
+            :hover{
+                background-color: rgb(233, 242, 249);
+            }
+        }
+}
 
-
-  
+.nav__mettre{
+    padding-right: 0% !important;
+}
+.header__register{
+    font-weight: bolder !important;
+}

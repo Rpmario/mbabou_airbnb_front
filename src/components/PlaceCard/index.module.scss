@@ -1,6 +1,8 @@
 .wrapper {
     width: 280px;
-    padding: 0px 0px;    
+    padding: 0px 0px;
+    text-decoration: none;
+    margin-bottom: 20px;
     .thumbnail__wrapper {
         background: lightgray;
         height: 245px;
@@ -25,7 +27,7 @@
     }
     .content {
         display: flex;
-        margin-bottom: 25px;
+        margin-bottom: 5px;
         .metadata {
             width: 70%;
             b {
@@ -42,6 +44,8 @@
         .rate {
             width: 25%;
             text-align: right;
+            text-decoration: none;
+            color: black;
             .star__rate {
                 width: 12PX;
                 color: black;

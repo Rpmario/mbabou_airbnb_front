@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./index.module.scss";
+import Link from "next/link";
 import WishlistContext from "../../context/WishlistContext";
 import { StarIcon, HeartIcon } from '@heroicons/react/24/solid';
 
@@ -25,8 +26,13 @@ const updateWish = () => {
             }
           }
         >
-          {clicked? <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="red"/>:
-          <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="gray"/>}
+          {clicked? 
+          <Link href="#">
+            <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="red"/>
+          </Link>:
+          <Link href="#">
+            <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="gray"/>
+          </Link>}
         </button>
         <img src={place.images[0]} alt={place.title} />
       </div>
@@ -39,11 +45,8 @@ const updateWish = () => {
         </div>
         <div className={styles.rate}>
           <StarIcon className={styles.star__rate} color="black"/>
-          <span><b> {place?.rate || " None"}</b></span>
+          <span><b>{place?.rate || " None"}</b></span>
         </div>
-        {/* <div className={styles.description}>
-          <span>{place.description}</span>
-        </div> */}
       </div>
     </div>
   );
