@@ -1,8 +1,8 @@
 .wrapper {
     width: 280px;
-    padding: 0px 0px;
     text-decoration: none;
     margin-bottom: 20px;
+    cursor: pointer;
     .thumbnail__wrapper {
         background: lightgray;
         height: 245px;
@@ -20,6 +20,7 @@
             top: 10px;
             background: none;
             border: none;
+            padding: 5px;
             .coeur {
                 width: 30px;
             }

@@ -3,20 +3,47 @@ import styles from "./index.module.scss";
 import Link from "next/link";
 import WishlistContext from "../../context/WishlistContext";
 import { StarIcon, HeartIcon } from '@heroicons/react/24/solid';
+import { useRouter } from "next/router";
 
 const Index = ({ place }) => {
+  const router = useRouter()
 
   const { addPlaceWishlist } = useContext(WishlistContext);
   const [clicked, setClicked] = useState(false);
 
 
-const updateWish = () => {
-  setClicked (previous => !previous)
+const updateWish = async() => {
+  const Connexion = await verifconnected()
+  console.log(Connexion, "test wishlist")
+  if (Connexion === true){
+    setClicked (previous => !previous)
+  }
+  else{
+    router.push("/login")
+    if (router.isReady) {
+      window.location.reload();
+    }
+  }
 
 }
 
+const verifconnected = async() => {
+  const token = await localStorage.getItem("token"); 
+
+  if (token) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+const changePage = () => {
+  router.push(`/myposts/${place._id}`)
+}
+
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} onClick={()=> {changePage()}}>
       <div className={styles.thumbnail__wrapper}>
         <button
           className={styles.btn__whishlist}
@@ -31,7 +58,8 @@ const updateWish = () => {
             <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="red"/>
           </Link>:
           <Link href="#">
-            <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="gray"/>
+            <HeartIcon onClick={() => updateWish()} className={styles.coeur} color="gray"
+            strokeWidth={1.5} stroke="white"/>
           </Link>}
         </button>
         <img src={place.images[0]} alt={place.title} />
@@ -45,7 +73,7 @@ const updateWish = () => {
         </div>
         <div className={styles.rate}>
           <StarIcon className={styles.star__rate} color="black"/>
-          <span><b>{place?.rate || " None"}</b></span>
+          <span><b>{" " + place?.rate || " None"}</b></span>
         </div>
       </div>
     </div>

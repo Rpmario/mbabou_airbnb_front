@@ -1,6 +1,8 @@
 import TitlePage from "../components/TitlePage";
 import PlaceGrid from "../components/PlaceGrid/";
 import { useEffect, useState } from "react";
+import MainLayout from "../layouts/MainLayout";
+import Submain from "../components/Header/submain";
 
 export default function Home() {
 
@@ -22,9 +24,12 @@ export default function Home() {
   }, [])
 
   return (
-    <main>
-      {/* <TitlePage title="Homepage" /> */}
-      <PlaceGrid places={data} />
-    </main>
+    <MainLayout>
+      {/* <main> */}
+        {/* <TitlePage title="Homepage" /> */}
+        <Submain/>
+        <PlaceGrid places={data} />
+      {/* </main> */}
+    </MainLayout>
   )
 }

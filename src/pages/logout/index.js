@@ -10,7 +10,7 @@ function Deconnexion() {
     //window.location.href = window.location.href;
   }, []);
 
-  return <div>Logut...</div>;
+  return <div>Logout...</div>;
 }
 
 export default Deconnexion;
