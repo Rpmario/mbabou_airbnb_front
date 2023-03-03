@@ -71,7 +71,11 @@ const Index = () => {
         </div>
         <div className={styles.header__menu2}>
           <p className={styles.header__menuLink}>
-            <span>Mettre mon logement sur Airbnb</span>
+            <span>
+              <Link href="/newpost" className={styles.header__register} >
+                Mettre mon logement sur Airbnb
+              </Link>
+            </span>
           </p>
           <p className={styles.header__menuGlobe} >
               <img alt='' src='https://cdn-icons-png.flaticon.com/128/512/512127.png' color="black" height={20} />
@@ -94,7 +98,7 @@ const Index = () => {
                 </Link>
               )}
               {isAuthenticated && (
-                <Link href="/myposts">
+                <Link href="/mesposts">
                   Mes posts
                 </Link>
               )}
@@ -106,6 +110,13 @@ const Index = () => {
                 </Link>
               )}
               {isAuthenticated && (
+                <Link href="/profil">
+                  Mon profil
+                </Link>
+              )}
+            </li>
+            <li className={styles.nav__item}>
+              {isAuthenticated && (
                 <Link href="/logout">
                   Déconnexion
                 </Link>
@@ -114,7 +125,7 @@ const Index = () => {
             </ul>
             <ul className={styles.nav__list2}>
               <li className={styles.nav__item}>
-                <Link href="#" className={styles.nav__mettre}>
+                <Link href="/newpost" className={styles.nav__mettre}>
                   Mettre mon logement sur Airbnb
                 </Link>
               </li>

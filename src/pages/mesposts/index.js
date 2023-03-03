@@ -49,7 +49,7 @@ const Index = () => {
     <>
       {
         openModal && (
-          <Modal title="Modifier mon profil" closeModal={() => setOpenModal(false)}>
+          <Modal title="Modifier ce post" closeModal={() => setOpenModal(false)}>
             <form onSubmit={(e) => submitUpdate(e)}>
               <Input
                 titleLabel="firstname"
@@ -82,7 +82,7 @@ const Index = () => {
                 }}
               />
               <Button 
-                title="modifier" 
+                title="Modifier" 
                 type="submit"
                 handleClick={() => {
                   console.log("test")
@@ -93,28 +93,26 @@ const Index = () => {
           </Modal>
         )
       }
-        <TitlePage title="Mon profil" />
-        <div className={styles.page__profil}>
-          <div className={styles.wrapper}>
-            {
-              user ? (
-                <>
-                  <p>FirstName : {user.firstName}</p>
-                  <p>lastName : {user.lastName}</p>
-                  <p>Email : {user.email}</p>
-                </>
-              ) : <p>...loading</p>
-            }
-            <Button
-              title="Modifier"
-              handleClick={() => {
-                setOpenModal(true);
-              }}
-              type="button"
-              btnClass="btn__primary"
-            />
-          </div>
-      </div>
+        <TitlePage title="Mes Posts" />
+        <div className={styles.page__mesPosts}>
+          {
+            user ? (
+              <>
+                <p>Titre : {user.firstName}</p>
+                <p>Disponibilité : {user.lastName}</p>
+                <p>Description : {user.email}</p>
+              </>
+            ) : <p>...loading</p>
+          }
+          <Button
+            title="Modifier"
+            handleClick={() => {
+              setOpenModal(true);
+            }}
+            type="button"
+            btnClass="btn__primary"
+          />
+        </div>
     </>
   );
 }

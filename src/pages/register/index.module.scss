@@ -1,4 +1,16 @@
 .form__register {
     width: 500px;
-    margin: 80px auto;
+    margin: auto;
+    box-shadow: 1px 1px 3px rgb(126, 121, 121);
+    padding: 30px;
+    border-radius: 15px;
+    Button{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+.page__register{
+    display: block;
+    margin: auto;
+    margin-bottom: 100px;
 }

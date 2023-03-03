@@ -1,11 +1,85 @@
-.aide__image{
-    border-radius: 15px;
-    position: absolute;
-    left: 31%;
-    img{
-        border-radius: 15px;
-        box-shadow: 9px 9px 9px rgb(184, 184, 206);
-        margin-bottom: 100px;
-        width: 90%;
+.new__postPage{
+    margin-bottom: 100px;
+}
+.form__box{
+    display: flex;
+    justify-content: space-between;
+    @media(max-width: 650px) {
+        display: block;
+    }
+}
+.new__post{
+    width: 85%;
+    display: block;
+    margin: auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 3px rgb(126, 121, 121);
+}
+
+.form__boxLeft{
+    // border: solid red 2px;
+    width: 100%;
+    margin-right: 5px;
+    Input{
+        width: 100%;
+    }
+}
+.form__boxRight{
+    // border: solid red 2px;
+    width: 100%;
+    margin-left: 5px;
+    Input{
+        width: 100%;
+    }
+}
+
+.post__flex{
+    display: flex;
+    justify-content: space-between;
+    border: solid gray 1px;
+    padding: 5px 5px 0px 5px;
+    margin-bottom: 15px;
+    @media(max-width: 650px) {
+        display: block;
+        margin-bottom: 15px;
+    }
+    Input{
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+.post__radio{
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.post__hidden{
+    // visibility: hidden;
+    // position: relative;
+    // float: left;
+    // width: 0px;
+    // height: 0px;
+    // display: none;
+}
+
+.post__flexBoutton{
+    display: flex;
+    justify-content: space-between;
+    Button{
+        width: 40%;
+    }
+    button{
+        width: 40%;
+        border-radius: 10px;
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 17px;
+            font-weight: 400;
+            
+        }
     }
 }

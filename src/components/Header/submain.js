@@ -1,9 +1,21 @@
 import Link from 'next/link';
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react';
 import styles from "./index.module.scss";
-import { ChevronLeftIcon, ChevronRightIcon, MagnifyingGlassIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import Modal2 from "../../components/Modal2";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 
 const Submain = () => {
+
+  const [filter, setFilter] = useState({
+    prixMin: "",
+    prixMax: "",
+    capaciteMin: "",
+    capaciteMax: "",
+    typePlace: "",
+  });
+
   const subref = useRef()
   const scrollLeft = () => {
     subref.current.scrollLeft = scrollLeft -30
@@ -11,6 +23,28 @@ const Submain = () => {
   const scrollRight = () => {
     subref.current.scrollLeft = scrollLeft +30
   }
+  
+  //filtres
+  
+
+  const Filter = ({ handleFilter }) => {
+  }
+  
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFilter((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
+
+    const handleSubmit = (e) => {
+      e.preventDefault();
+       handleFilter(Filter);
+    };
+
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <div className={styles.header__submain1}>
           <p className={styles.header__chevronPrev} >
@@ -169,10 +203,93 @@ const Submain = () => {
           <p className={styles.header__chevronNext} >
             <ChevronRightIcon onClick={() => scrollRight()} color="black" className={styles.header__chevronIcon} />
           </p>
+          {/* Modal filtres */}
+          <>
+            {
+              openModal && (
+                <Modal2                      
+                  title2="Filtres" 
+                  closeModal={() => setOpenModal(false)}>
+                  <form onSubmit= { () => handleSubmit()} className={styles.filtreForm}>
+                    <div className={styles.filtre}>
+                    <Input
+                      titleLabel="Prix minimum"
+                      inputType="number"
+                      inputPlaceholder="€"
+                      inputName="prixMin"
+                      inputValue={filter.prixMin || ""}
+                      inputOnChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    <b> - </b>
+                    <Input
+                      titleLabel="Prix maximum"
+                      inputType="number"
+                      inputPlaceholder="€"
+                      inputName="prixMax"
+                      inputValue={filter.prixMax || ""}
+                      inputOnChange={(e) => {
+                        handleChange(e);
+                      }}
+                    />
+                    </div>
+                    <div className={styles.filtre}>
+                      <Input
+                        titleLabel="Capacité minimum"
+                        inputType="number"
+                        // inputPlaceholder="Capacité minimum"
+                        inputName="capaciteMin"
+                        inputValue={filter.capaciteMin || ""}
+                        inputOnChange={(e) => {
+                          handleChange(e);
+                        }}
+                      />
+                      <b> - </b>
+                      <Input
+                        titleLabel="Capacité maximum"
+                        inputType="number"
+                        // inputPlaceholder="Capacité maximum"
+                        inputName="capaciteMax"
+                        inputValue={filter.capaciteMax || ""}
+                        inputOnChange={(e) => {
+                          handleChange(e);
+                        }}
+                      />
+                    </div>
+                    <div className={styles.filtreType}>
+                    <Input
+                        titleLabel="Type de logement"
+                        inputType="text"
+                        inputPlaceholder="Maison, Villa ou Appartement"
+                        inputName="typePlace"
+                        inputValue={filter.typePlace || ""}
+                        inputOnChange={(e) => {
+                          handleChange(e);
+                        }}
+                      />
+                    </div>
+                    <Button
+                      title="Filtrer"
+                      type="submit"
+                      btnClass="btn__primary"
+                    />
+                  </form>
+                </Modal2>
+              )
+            }
+                  </>
           <div className={styles.header__filter}>
             <p className={styles.header__filterlink}>
               <img alt='' src='https://cdn-icons-png.flaticon.com/128/8414/8414931.png' />
-              <span>Filtres</span>
+              <Button
+                title="Filtres"
+                handleClick={() => {
+                  setOpenModal(true);
+                }}
+                type="button"
+                btnClass="btn__primary"
+              />
             </p>
           </div>
         </div>

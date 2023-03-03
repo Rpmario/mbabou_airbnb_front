@@ -6,6 +6,7 @@ import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Notification from "../../components/Notification";
 import styles from "./index.module.scss";
+import Link from "next/link";
 
 const Index = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const Index = () => {
           return false;
         } 
         localStorage.setItem('token', data.token);
-        router.push("/profil");
+        router.push("/mesposts");
         //window.location.href = window.location.href;
       })
       .catch(
@@ -43,7 +44,7 @@ const Index = () => {
   }
 
   return (
-    <div className="page__register">
+    <div className={styles.page__login}>
       <TitlePage title="Login your account"/>
       <form className={styles.form__login}>
         <Input
@@ -67,7 +68,7 @@ const Index = () => {
           }}
         />
         <Button
-          title="submit"
+          title="Connexion"
           handleClick={(e) => {
             submitForm(e);
           }}
@@ -82,6 +83,7 @@ const Index = () => {
         {
           message && <Notification type={type} message={message}/>
         }
+        <p>Pas encore inscrit ? <Link href="/register"> Inscription </Link></p>
       </form>
     </div>
   );

@@ -7,7 +7,7 @@
         border-bottom: 1px solid #e2e1e1ab;
         position: fixed;
         top: 0px !important;
-        z-index: 9999;
+        z-index: 999;
         width: 100%;
         height: 70px;
         background-color: #fff;
@@ -92,7 +92,7 @@
         right: 40px;
         width: fit-content;
         justify-content: space-between;
-        //border: solid red;
+        //  border: solid red;
         .header__menuGlobe{
             margin: 15px 0px 0px 15px;
             border-radius: 25px;
@@ -113,17 +113,18 @@
             cursor: pointer;
         }
         .header__menuLink{
-            text-decoration: none;
-            color: black;
             margin: 15px 0px 0px 15px;
             padding: 5px;
-            font-size: 15px;
-            font-weight: 500;
+            
             cursor: pointer;
             span{
                 padding: 8px 10px;
                 @media(max-width: 1145px) {
                     display: none;
+                }
+                a{
+                    text-decoration: none;
+                    color: black;
                 }
             }
             span:hover{
@@ -162,7 +163,7 @@
     align-items: center;
     border-top: 1px solid #e2e1e1ab;
     position: fixed;
-    z-index: 9980;
+    z-index: 9;
     width: 100%;
     height: 90px;
     background-color: #fff;
@@ -171,14 +172,14 @@
 
 .header{
     &__submain2{
-        //border: solid red 2px;
+        // border: solid red 2px;
         padding: 8px 20px;
         overflow-x: scroll;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: absolute;
-        z-index: 9990;
+        z-index: 90;
         width: 75%;
         height: 75px;
         background-color: #fff;
@@ -203,7 +204,6 @@
         justify-content: space-between;
         align-items: center;
         position: absolute;
-        z-index: 9990;
         width: max-content;
         height: 75px;
         background-color: #fff;
@@ -215,7 +215,6 @@
             display: none;
         }
         &__filterLink{
-            //border: solid red 2px;
             text-decoration: none;
         }
     }
@@ -302,28 +301,60 @@
 .header__filterlink{
         border: solid rgb(136, 134, 134) 1px;
         text-decoration: none;
-        padding: 15px;
+        padding: 5px;
         border-radius: 10px;
-        span{
-            font-size: small;
-            margin-left: 5px;
-            color: black;
-        }
+        display: flex;
+        justify-content: space-between;
+        z-index: 99;
+        background-color: white;
         img{
-            height: 13px;
-            width: 13px;
+            height: 15px;
+            width: 15px;
+            position: relative;
+            top: 8px;
+        }
+        Button{
+            color: black;
+            padding: 8px;
+            background-color: white;
+            border: none;
+            font-size: small;
+        }
+        Button:hover{
+            border: none;
         }
           
 }
 
+.filtreForm{
+    width: 70%;
+    display: block;
+    margin: auto;
+    .filtre{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: #d8d4d4 solid 1px;
+        margin: 20px 0px;
+        Input{
+            width: 100%;
+        }
+        b{
+            position: relative;
+            bottom: -30px;
+        }
+    }
+    Button{
+        width: 100%;
+    }
+}
+
 .header__divMenu {
-        background-color: #f9f5f5;
+        background-color: white;
         width: max-content;
         position: absolute;
         right: 5px;
         top: 60px;
-        z-index: 9999999;
-        //padding: 10px;
         line-height: 40px;
         border-radius: 10px;
         box-shadow: 2px 5px 5px #d8d4d4;
@@ -332,7 +363,6 @@
             padding: 9px 0px;
             border-bottom: solid gray 1px;
             .nav__item {
-                //background-color: #ff385c;
                 a {
                     margin: 10px 20px;
                     padding-right: 50%;
@@ -350,7 +380,6 @@
             list-style: none;
             padding: 9px 0px;
             .nav__item {
-                //background-color: #ff385c;
                 a {
                     margin: 10px 20px;
                     padding-right: 50%;

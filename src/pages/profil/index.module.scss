@@ -1,7 +1,15 @@
 .wrapper {
+    width: 300px;
+    margin: auto;
+    box-shadow: 1px 1px 3px rgb(126, 121, 121);
     padding: 30px;
+    border-radius: 15px;
     p {
         font-size: 20px;
+        margin-bottom: 20px;
+    }
+    Button{
+        width: 50%;
         margin-bottom: 20px;
     }
 }

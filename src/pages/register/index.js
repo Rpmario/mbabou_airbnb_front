@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import AuthService from '../../services/auth.service';
 import TitlePage from "../../components/TitlePage";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import styles from "./index.module.scss";
+import Link from 'next/link';
 const Index = () => {
 
   const [userForm, setUserForm] = useState({
@@ -12,6 +14,8 @@ const Index = () => {
     email: "",
     password: ""
   });
+
+  const router = useRouter();
 
   const handleInput = (e) => {
     setUserForm({ ...userForm, [e.target.name]: e.target.value });
@@ -22,10 +26,11 @@ const Index = () => {
     AuthService.register(userForm)
       .then(user => console.log(user))
       .catch(err=>console.log(err))
+      router.push("/login");
   }
 
   return (
-    <div className="page__register">
+    <div className={styles.page__register}>
       <TitlePage title="Create your account"/>
       <form className={styles.form__register}>
         <Input
@@ -69,13 +74,14 @@ const Index = () => {
           }}
         />
         <Button
-          title="submit"
+          title="Submit"
           handleClick={(e) => {
             submitForm(e);
           }}
           type="submit"
           btnClass="btn__primary"
         />
+        <p>Déjà inscrit ? <Link href="/login"> Connexion </Link></p>
       </form>
     </div>
   );

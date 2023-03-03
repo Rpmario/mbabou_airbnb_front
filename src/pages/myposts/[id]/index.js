@@ -3,8 +3,8 @@ import {useRouter} from 'next/router';
 import axios from 'axios'
 import Link from "next/link";
 import { StarIcon, ArrowUpTrayIcon, HeartIcon, UserCircleIcon, 
-  ChevronLeftIcon, MapPinIcon, KeyIcon, CalendarIcon 
- } from '@heroicons/react/24/solid';
+         ChevronLeftIcon, MapPinIcon, KeyIcon, CalendarIcon 
+} from '@heroicons/react/24/solid';
 import styles from "./index.module.scss";
 import Modal2 from "../../../components/Modal2";
 import Button from "../../../components/Button";
