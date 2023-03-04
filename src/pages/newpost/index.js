@@ -17,16 +17,22 @@ const Index = () => {
     types: "",
     owner: "",
     proprio: "",
-    perDay: "",
-    rate: "",
-    capacity: "",
+    pricing: {
+      perDay: 0,
+    },
+    rate: 0,
+    capacity: 0,
+    images: [],
     description: "",
-    city: "",
-    street: "",
-    zipCode: "",
-    lat: "",
-    long: "",
-    images: ""
+    address: {
+      city: "",
+      street: "",
+      zipCode: 0,
+      gps: {
+        lat: 0,
+        long: 0
+      }
+    }
   });
 
   const [userForm, setUserForm] = useState({
@@ -54,7 +60,16 @@ const Index = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    AuthService.newpost(postForm) //!!!!!!!Warning!!!!!!!!!!!!!
+    console.log("old", postForm)
+    postForm.pricing.perDay = postForm.perDay
+    postForm.address.city = postForm.city
+    postForm.address.street = postForm.street
+    postForm.address.zipCode = postForm.zipCode
+    postForm.address.gps.lat = postForm.lat
+    postForm.address.gps.long = postForm.long
+    postForm.images = postForm.images.split(",")
+    console.log("new", postForm)
+    AuthService.newpost(postForm)
       .then(post => console.log(post))
       .catch(err=>console.log(err))
       console.log(postForm)
@@ -147,7 +162,7 @@ const Index = () => {
                 inputType="number"
                 inputPlaceholder="€"
                 inputName="perDay"
-                inputValue={postForm.perDay || ""}
+                // inputValue={postForm.perDay || ""}
                 inputOnChange={(e) => {
                   handleInput(e);
                 }}
@@ -241,20 +256,22 @@ const Index = () => {
           </span>
           <div className={styles.post__hidden}>
             <Input
-              titleLabel="Owner"
-              inputType="text" //readOnly
+              titleLabel="Owner ID"
+              texteLabel={userForm._id}
+              inputType="text"
+              inputPlaceholder="Copiez et collez votre ID ici"
               inputName="owner"
-              inputValue={userForm._id}
+              inputValue={postForm.owner || ""}
               inputOnChange={(e) => {
                 handleInput(e);
               }}
             />
             <Input
               titleLabel="Rate"
-              inputType="text" //readOnly
-              // inputPlaceholder="4.5"
+              inputType="text"
+              inputPlaceholder="4.5"
               inputName="rate"
-              inputValue="4.5"
+              inputValue={postForm.rate || ""}
               inputOnChange={(e) => {
                 handleInput(e);
               }}

@@ -5,6 +5,7 @@ const Index = (props) => {
   return (
     <div className={styles.input__wrapper}>
       <label>{props.titleLabel}</label>
+      <span>{props.texteLabel}</span>
       <input
         type={props.inputType}
         placeholder={props.inputPlaceholder}

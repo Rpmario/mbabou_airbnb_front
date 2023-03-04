@@ -39,8 +39,9 @@ const Submain = () => {
     }
 
     const handleSubmit = (e) => {
-      e.preventDefault();
-       handleFilter(Filter);
+      // e.preventDefault();
+      console.log("prix max= ",filter)
+      handleFilter(Filter);
     };
 
   const [openModal, setOpenModal] = useState(false);
@@ -210,7 +211,7 @@ const Submain = () => {
                 <Modal2                      
                   title2="Filtres" 
                   closeModal={() => setOpenModal(false)}>
-                  <form onSubmit= { () => handleSubmit()} className={styles.filtreForm}>
+                  <form onSubmit= {handleSubmit} className={styles.filtreForm}>
                     <div className={styles.filtre}>
                     <Input
                       titleLabel="Prix minimum"
@@ -238,7 +239,6 @@ const Submain = () => {
                       <Input
                         titleLabel="Capacité minimum"
                         inputType="number"
-                        // inputPlaceholder="Capacité minimum"
                         inputName="capaciteMin"
                         inputValue={filter.capaciteMin || ""}
                         inputOnChange={(e) => {
@@ -249,7 +249,6 @@ const Submain = () => {
                       <Input
                         titleLabel="Capacité maximum"
                         inputType="number"
-                        // inputPlaceholder="Capacité maximum"
                         inputName="capaciteMax"
                         inputValue={filter.capaciteMax || ""}
                         inputOnChange={(e) => {

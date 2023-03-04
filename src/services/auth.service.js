@@ -29,7 +29,7 @@ export default {
   },
 
   newpost(body) {
-    return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/places`, {
+    return fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/place`, {
       method: "POST",
       headers: {
         'Content-type': "application/json"
@@ -38,3 +38,24 @@ export default {
     }).then(res => res.json())
   },
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
