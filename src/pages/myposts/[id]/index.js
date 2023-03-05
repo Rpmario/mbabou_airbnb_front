@@ -75,7 +75,6 @@ const getPostData = async(id) =>{
                   {place?.address?.zipCode + "," || "00000,"}
                   {place?.address?.street + "," || "Street name,"}
                   {place?.address?.city || "City"}
-                  {/* {place?.country + " " || " France"} */}
                 </p>
               </div>
               <div className={styles.onePlace__submainright}>
@@ -365,11 +364,6 @@ const getPostData = async(id) =>{
                 longitude={place?.address?.gps?.long || "2.287592"} 
               />
             </div>
-
-            {/* <p>{place?.proprio || "Particulier"}</p>
-            <p>{place?.periode || "3-9 avril"}</p>
-            <p><b>{place.pricing.perDay + " €"}</b> par nuit</p>
-            <p><img src={place.images[0 , 1 , 2]} alt={place.title} /></p> */}
          </div>
          : <div></div>}
         </div>

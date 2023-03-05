@@ -4,20 +4,35 @@ import userService from '../../services/user.service';
 import styles from "./index.module.scss";
 import Button from "../../components/Button";
 import Modal from "../../components/Modal";
-import Input from "../../components/Input";
 import WithAuth from '../../HOC/WithAuth';
+import PlaceGrid from "../../components/PlaceGrid/";
 
 const Index = () => {
 
   const [user, setUser] = useState();
   const [openModal, setOpenModal] = useState(false);
   const [userForm, setUserForm] = useState();
+  const [data, setData] = useState([]);
+  const [place, setPlace ]= useState()
+
+  const getData = () =>
+    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/place`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }).then((res) => res.json().then((r) => setData(r)));
+
+  useEffect(() => {
+    getData();
+
+    return () => {};
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     userService.getMe(token)
       .then((user) => {
-        console.log(user);
         setUserForm(user);
         setUser(user);
       })
@@ -37,13 +52,15 @@ const Index = () => {
     const token = localStorage.getItem('token');
     userService.UpdateUser(token, userForm)
       .then((user) => {
-        console.log(user);
         setOpenModal(false);
         setUser(user);
-      }
-      )
+      })
       .catch(err => console.log(err));
   }
+
+  const userPlaces = data.filter(place => place.owner === user._id);
+  //  console.log("Test Owner", place.owner);
+  // console.log("Test User_id", user._id);
 
   return (
     <>
@@ -51,68 +68,38 @@ const Index = () => {
         openModal && (
           <Modal title="Modifier ce post" closeModal={() => setOpenModal(false)}>
             <form onSubmit={(e) => submitUpdate(e)}>
-              <Input
-                titleLabel="firstname"
-                inputType="text"
-                inputPlaceholder="firstname"
-                inputName="firstName"
-                inputValue={userForm.firstName}
-                inputOnChange={(e) => {
-                  handleInput(e);
-                }}
-              />
-              <Input
-                titleLabel="lastname"
-                inputType="text"
-                inputPlaceholder="lastname"
-                inputName="lastName"
-                inputValue={userForm.lastName}
-                inputOnChange={(e) => {
-                  handleInput(e);
-                }}
-              />
-              <Input
-                titleLabel="email"
-                inputType="email"
-                inputPlaceholder="email"
-                inputName="email"
-                inputValue={userForm.email}
-                inputOnChange={(e) => {
-                  handleInput(e);
-                }}
-              />
-              <Button 
-                title="Modifier" 
-                type="submit"
-                handleClick={() => {
-                  console.log("test")
-                }}
-                btnClass="btn__primary"
-              />
+              testform
             </form>
           </Modal>
         )
       }
-        <TitlePage title="Mes Posts" />
-        <div className={styles.page__mesPosts}>
-          {
-            user ? (
-              <>
-                <p>Titre : {user.firstName}</p>
-                <p>Disponibilité : {user.lastName}</p>
-                <p>Description : {user.email}</p>
-              </>
-            ) : <p>...loading</p>
-          }
-          <Button
-            title="Modifier"
-            handleClick={() => {
-              setOpenModal(true);
-            }}
-            type="button"
-            btnClass="btn__primary"
-          />
-        </div>
+      <TitlePage title="Mes Posts" />
+      <div className={styles.page__mesPosts}>
+        {
+          user ? (
+            <>
+              <p>Bonjour {user.lastName}</p>
+              {
+                userPlaces.length > 0 ?
+                  <PlaceGrid places={userPlaces} />
+                  :
+                  <div>
+                  <p>Aucun post à afficher pour cet utilisateur</p>
+                    {/* <PlaceGrid places={data} /> */}
+                  </div>
+              }
+            </>
+          ) : <p>...loading</p>
+        }
+        {/* <Button
+          title="Modifier"
+          handleClick={() => {
+            setOpenModal(true);
+          }}
+          type="button"
+          btnClass="btn__primary"
+        /> */}
+      </div>
     </>
   );
 }

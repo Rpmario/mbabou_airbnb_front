@@ -18,7 +18,7 @@ export const WishlistContextProvider = ({ children }) => {
   const removePlaceWishlist = (id) => {
     //checker si la place à insérer existe ou non dans le tableau de wishlist
     // avant de le supprimer
-    // setWishlist(//?)
+    // setWishlist()
   }
   const addPlaceWishlist = (place) => {
     //checker si la place à insérer existe ou non dans le tableau de wishlist

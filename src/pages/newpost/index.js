@@ -235,7 +235,7 @@ const Index = () => {
            <Input
               titleLabel="Image(s)"
               inputType="url"
-              inputPlaceholder="https://image-url.com"
+              inputPlaceholder="https://image1-url.com,https://image2-url.com,https://image3-url.com,..."
               inputName="images"
               inputValue={postForm.images || ""}
               inputOnChange={(e) => {
@@ -279,7 +279,7 @@ const Index = () => {
           </div>
           <div className={styles.post__flexBoutton}>
             <button>
-              <Link href="/mesposts">
+              <Link href="/">
                 Annuler
               </Link>
             </button>

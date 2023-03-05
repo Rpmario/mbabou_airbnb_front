@@ -11,61 +11,61 @@ const Index = () => {
           <div className={styles.footer__bloc1}>
             <ol>
             <li>
-                <span href="#" className={styles.footer__right}>
+                <span className={styles.footer__right}>
                 &copy; 2023  Airbnb, Inc.
                 </span>
               </li>
               <li>
                 <span>.</span>
-                <Link href="#" className={styles.footer__link}>
+                <span className={styles.footer__link}>
                   Conditions générales
-                </Link>
+                </span>
               </li>
               <li>
                 <span>.</span>
-                <Link href="#" className={styles.footer__link}>
+                <span className={styles.footer__link}>
                   Plan du site
-                </Link>
+                </span>
               </li>
               <li>
                 <span>.</span>
-                <Link href="#" className={styles.footer__link}>
+                <span className={styles.footer__link}>
                   Fonctionnement du site
-                </Link>
+                </span>
               </li>
               <li>
                 <span>.</span>
-                <Link href="#" className={styles.footer__link}>
+                <span className={styles.footer__link}>
                   Infos dur l'entreprise
-                </Link>
+                </span>
               </li>
               <li>
                 <span>.</span>
-                <Link href="#" className={styles.footer__link}>
+                <span className={styles.footer__link}>
                   Destinations
-                </Link>
+                </span>
               </li>
             </ol>
           </div>
           <div className={styles.footer__bloc2}>
-            <Link href="#" className={styles.footer__l} >
+            <span className={styles.footer__l} >
               <img alt='' src='https://cdn-icons-png.flaticon.com/128/512/512127.png' color="black" height={17} className={styles.footer__icon} />
-            </Link>
-            <Link href="#" className={styles.footer__link2}>
+            </span>
+            <span className={styles.footer__link2}>
               Français (FR)
-            </Link>
-            <Link href="#" className={styles.footer__l} >
+            </span>
+            <span className={styles.footer__l} >
               <span className={styles.footer__euro}>€</span>
-            </Link>
-            <Link href="#" className={styles.footer__link2}>
+            </span>
+            <span className={styles.footer__link2}>
               EUR
-            </Link>
-            <Link href="#" className={styles.footer__link2}>
+            </span>
+            <span className={styles.footer__link2}>
               Assistance et ressources
-            </Link>
-            <Link href="#" className={styles.footer__l}>
+            </span>
+            <span className={styles.footer__l}>
               <ChevronUpIcon color="black" height={19} className={styles.footer__icon} />
-            </Link>
+            </span>
           </div>
         </div>
       </div>

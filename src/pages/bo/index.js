@@ -7,7 +7,7 @@ const Index = () => {
   
     useEffect(() => {
       async function fetchUsers() {
-        const response = await fetch("http://localhost:4000/api/v1/users");
+        const response = await fetch("http://localhost:4000/api/v1/user");
         const data = await response.json();
         setUsers(data);
       }

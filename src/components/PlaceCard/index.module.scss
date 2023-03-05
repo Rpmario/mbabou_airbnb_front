@@ -3,12 +3,38 @@
     text-decoration: none;
     margin-bottom: 20px;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
     .thumbnail__wrapper {
         background: lightgray;
         height: 245px;
         border-radius: 10px;
         margin-bottom: 15px;
         position: relative;
+        .prev{
+            width: 20px;
+            position: absolute;
+            left: 10px;
+            top: 45%;
+            background: rgb(239, 233, 233);
+            border: none;
+            padding: 5px;
+            border-radius: 25px;
+            display: none;
+            z-index: 9;
+        }
+        .next{
+            width: 20px;
+            position: absolute;
+            right: 10px;
+            top: 45%;
+            background: rgb(239, 233, 233);
+            border: none;
+            padding: 5px;
+            border-radius: 25px;
+            display: none;
+            z-index: 9;
+        }
         img {
             width: 100%;
             height: 100%;
@@ -21,10 +47,18 @@
             background: none;
             border: none;
             padding: 5px;
+            z-index: 9;
             .coeur {
                 width: 30px;
+                z-index: 9;
             }
         }
+    }
+    .thumbnail__wrapper:hover .next {
+        display: block;
+    }
+    .thumbnail__wrapper:hover .prev {
+        display: block;
     }
     .content {
         display: flex;
