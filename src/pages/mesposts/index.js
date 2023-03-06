@@ -1,107 +1,70 @@
-import {useEffect, useState} from 'react';
+import PlaceGrid from "../../components/PlaceGrid/";
+import { useEffect, useState } from "react";
+import MainLayout from "../../layouts/MainLayout";
 import TitlePage from "../../components/TitlePage";
 import userService from '../../services/user.service';
+import Link from "next/link";
 import styles from "./index.module.scss";
-import Button from "../../components/Button";
-import Modal from "../../components/Modal";
-import WithAuth from '../../HOC/WithAuth';
-import PlaceGrid from "../../components/PlaceGrid/";
 
-const Index = () => {
+export default function Home() {
 
   const [user, setUser] = useState();
-  const [openModal, setOpenModal] = useState(false);
-  const [userForm, setUserForm] = useState();
+
   const [data, setData] = useState([]);
-  const [place, setPlace ]= useState()
-
-  const getData = () =>
-    fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/place`, {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-    }).then((res) => res.json().then((r) => setData(r)));
-
-  useEffect(() => {
-    getData();
-
-    return () => {};
-  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
     userService.getMe(token)
       .then((user) => {
-        setUserForm(user);
+        console.log(user);
         setUser(user);
       })
       .catch(err => console.log(err))
   }, []);
 
+  const getData = () => {
+    if (user) {
+      console.log(user._id);
+      fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/place/userplaces/${user._id}`, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+      }).then((res) => res.json().then((r) => setData(r)))
+    } else {
+      console.log("L'utilisateur n'est pas connecté.");
+    }
+  };
+  
+
   useEffect(() => {
-    console.log(openModal);
-  }, [openModal]);
+    getData();
 
-  const handleInput = (e) => {
-    setUserForm({ ...userForm, [e.target.name]: e.target.value });
-  }
-
-  const submitUpdate = (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem('token');
-    userService.UpdateUser(token, userForm)
-      .then((user) => {
-        setOpenModal(false);
-        setUser(user);
-      })
-      .catch(err => console.log(err));
-  }
-
-  const userPlaces = data.filter(place => place.owner === user._id);
-  //  console.log("Test Owner", place.owner);
-  // console.log("Test User_id", user._id);
+    return () => {};
+  }, [user]);
 
   return (
-    <>
+    <MainLayout>
       {
-        openModal && (
-          <Modal title="Modifier ce post" closeModal={() => setOpenModal(false)}>
-            <form onSubmit={(e) => submitUpdate(e)}>
-              testform
-            </form>
-          </Modal>
-        )
-      }
-      <TitlePage title="Mes Posts" />
-      <div className={styles.page__mesPosts}>
-        {
           user ? (
             <>
-              <p>Bonjour {user.lastName}</p>
+              <TitlePage title="Mes Posts" className={styles.mesPost__title} />
+              <p className={styles.mesPost__bonjour}>Bonjour {user.firstName}</p>
               {
-                userPlaces.length > 0 ?
-                  <PlaceGrid places={userPlaces} />
+                data.length <= 0 ?
+                  <div className={styles.mesPost__messageNegatif}>
+                    <p >Vous n'avez aucune annonce en ligne !</p>
+                    <Link href="/newpost" >Mettre mon logement sur Airbnb</Link>
+                  </div>
                   :
                   <div>
-                  <p>Aucun post à afficher pour cet utilisateur</p>
-                    {/* <PlaceGrid places={data} /> */}
+                    <p className={styles.mesPost__messagePositif}>Voici vos annonces en ligne !</p>
+                    <PlaceGrid places={data} />
                   </div>
               }
             </>
           ) : <p>...loading</p>
         }
-        {/* <Button
-          title="Modifier"
-          handleClick={() => {
-            setOpenModal(true);
-          }}
-          type="button"
-          btnClass="btn__primary"
-        /> */}
-      </div>
-    </>
+    </MainLayout>
   );
 }
-
-export default WithAuth(Index);

@@ -1,0 +1,30 @@
+.mesPost__bonjour{
+    font-size: x-large;
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.mesPost__messageNegatif{
+    p{
+        font-size: larger;
+        font-style: oblique;
+        margin-bottom: 40px;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        background-color: #fc5b79;
+        padding: 10px 20px;
+        border-radius: 10px;
+    }
+    a:hover{
+        background-color: aquamarine;
+    }
+}
+
+.mesPost__messagePositif{
+        font-size: larger;
+        font-style: oblique;
+}
